@@ -13,7 +13,7 @@ def init():
 
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
-    model = StableDiffusionPipeline.from_pretrained(model_id).to("cuda")
+    model = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion",torch_dtype=torch.float16).to("cuda")
     t2 = time.time()
     print("Init took - ",t2-t1,"seconds")
 

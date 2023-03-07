@@ -4,7 +4,7 @@ import torch
 import base64
 from io import BytesIO
 from torch import autocast
-from diffusers import StableDiffusionPipeline, EulerAncestralDiscreteScheduler
+from diffusers import StableDiffusionPipeline, DDIMScheduler
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
@@ -13,7 +13,8 @@ def init():
 
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
-    model = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion",torch_dtype=torch.float16).to("cuda")
+    scheduler = DDIMScheduler.from_pretrained(model_id, subfolder="scheduler")
+    model = StableDiffusionPipeline.from_pretrained(model_id, scheduler=scheduler,custom_pipeline="lpw_stable_diffusion",torch_dtype=torch.float16).to("cuda")
     t2 = time.time()
     print("Init took - ",t2-t1,"seconds")
 

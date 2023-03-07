@@ -24,7 +24,7 @@ def inference(model_inputs:dict) -> dict:
 
     # Parse out your arguments
     prompt = model_inputs.get('prompt', None)
-    height = model_inputs.get('height', 768)
+    height = model_inputs.get('height', 512)
     width = model_inputs.get('width', 768)
     negative = model_inputs.get('negative', None)
     steps = model_inputs.get('num_inference_steps', 50)

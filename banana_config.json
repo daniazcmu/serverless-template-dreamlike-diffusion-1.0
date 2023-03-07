@@ -3,6 +3,8 @@
     "category": "Computer Vision",
     "example_input": {
         "prompt": "a watercolor painting of a rabbit",
+        "height": 768,
+        "width": 512,
         "negative": "text, ugly",
         "num_inference_steps" : 50,
         "guidance_scale" : 7

@@ -3,13 +3,13 @@
 import os
 import time
 import torch
-from diffusers import StableDiffusionPipeline, StableDiffusionKDiffusionPipeline
+from diffusers import StableDiffusionPipeline
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights at build time
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
-    model = StableDiffusionKDiffusionPipeline.from_pretrained(
+    model = StableDiffusionPipeline.from_pretrained(
         model_id
     )
     t2 = time.time()

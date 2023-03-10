@@ -13,9 +13,9 @@ def init():
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
     device = "cuda" 
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion")
-    pipe.scheduler = KDPM2DiscreteScheduler.from_config(pipe.scheduler.config)
-    pipe = pipe.to(device)
+    model = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion")
+    model.scheduler = KDPM2DiscreteScheduler.from_config(model.scheduler.config)
+    model = model.to(device)
     t2 = time.time()
     print("Init took - ",t2-t1,"seconds")
 
@@ -38,7 +38,7 @@ def inference(model_inputs:dict) -> dict:
     # Run the model
     t1 = time.time()
     with autocast("cuda"):
-        image = model(prompt, height=height, width=width, negative_prompt=negative, num_images_per_prompt=1, num_inference_steps=steps, guidance_scale=guidance, max_embeddings_multiples=4).images[0]
+        image = pipe(prompt, height=height, width=width, negative_prompt=negative, num_images_per_prompt=1, num_inference_steps=steps, guidance_scale=guidance, max_embeddings_multiples=4).images[0]
     t2 = time.time()
     print("Inference took - ",t2-t1,"seconds")
     buffered = BytesIO()

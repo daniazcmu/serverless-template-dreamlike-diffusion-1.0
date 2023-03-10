@@ -10,7 +10,7 @@ def download_model():
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
     model = StableDiffusionKDiffusionPipeline.from_pretrained(
-        model_id, torch_dtype=torch.float16
+        model_id
     )
     t2 = time.time()
     print("Download took - ",t2-t1,"seconds")

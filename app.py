@@ -4,7 +4,7 @@ import torch
 import base64
 from io import BytesIO
 from torch import autocast
-from diffusers import StableDiffusionPipeline, DDIMScheduler
+from diffusers import StableDiffusionPipeline, KDPM2AncestralDiscreteScheduler
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"

@@ -9,9 +9,8 @@ def download_model():
     # do a dry run of loading the huggingface model, which will download weights at build time
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
-    model = StableDiffusionPipeline.from_pretrained(
-        model_id
-    )
+    model = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion")
+    model.scheduler = KDPM2AncestralDiscreteScheduler.from_config(pipe.scheduler.config)
     t2 = time.time()
     print("Download took - ",t2-t1,"seconds")
 

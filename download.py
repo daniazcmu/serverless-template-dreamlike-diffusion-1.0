@@ -10,7 +10,7 @@ def download_model():
     t1 = time.time()
     model_id = "dreamlike-art/dreamlike-diffusion-1.0"
     model = StableDiffusionPipeline.from_pretrained(model_id, custom_pipeline="lpw_stable_diffusion")
-    model.scheduler = KDPM2DiscreteScheduler.from_config(pipe.scheduler.config)
+    model.scheduler = KDPM2DiscreteScheduler.from_config(model.scheduler.config)
     t2 = time.time()
     print("Download took - ",t2-t1,"seconds")
 

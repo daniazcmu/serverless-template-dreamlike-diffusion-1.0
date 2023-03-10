@@ -38,7 +38,7 @@ def inference(model_inputs:dict) -> dict:
     # Run the model
     t1 = time.time()
     with autocast("cuda"):
-        image = model(prompt, height=height, width=width, negative_prompt=negative, num_images_per_prompt=1, num_inference_steps=steps, guidance_scale=guidance, max_embeddings_multiples=4).images[0]
+        image = model(prompt, height=height, width=width, negative_prompt=negative, num_images_per_prompt=1, num_inference_steps=steps, guidance_scale=guidance).images[0]
     t2 = time.time()
     print("Inference took - ",t2-t1,"seconds")
     buffered = BytesIO()

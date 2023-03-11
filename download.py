@@ -3,7 +3,7 @@
 import os
 import time
 import torch
-from diffusers import StableDiffusionPipeline, KDPM2DiscreteScheduler
+from diffusers import StableDiffusionPipeline
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights at build time
